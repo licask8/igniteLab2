@@ -10,6 +10,8 @@ interface LessonProps{
     type: 'live' | 'class';
 }
 
+
+
 export function Lesson({ title, slug, availableAt, type}: LessonProps) {
     const isLessonAvaiable = isPast(availableAt)
     const availableDateFormatted = format(availableAt, "EEE' • 'd' de 'MMM' • 'k'h'mm", {

@@ -11,6 +11,7 @@ query GetLessonBySlug ($slug: String) {
   lesson(where: {slug: $slug}) {
     title
     videoId
+    description
     teacher {
       name
       bio
@@ -43,7 +44,7 @@ export function Video({lessonSlug}: VideoProps) {
             slug: lessonSlug
         }
     })
-    console.log(data)
+    
     //loading
 
     if (!data) {
@@ -53,7 +54,7 @@ export function Video({lessonSlug}: VideoProps) {
             </div>
         )
     }
-
+    console.log(data.lesson)
     return (
         <div className="flex-1">
             <div className="bg-black flex justify-center">
@@ -73,6 +74,7 @@ export function Video({lessonSlug}: VideoProps) {
                         </h1>
                         <p className="mt-4 text-gray-200 leading-relaxed">
                         {data.lesson.description}
+                        
                         </p>
 
                         <div className="flex items-center gap-4 mt-6">
@@ -94,10 +96,10 @@ export function Video({lessonSlug}: VideoProps) {
                             <DiscordLogo size={24} />
                             Comunidade do Discord
                         </a>
-                        <a href="" className="p-4 text-sm border border-blue-500 text-blue-500 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-blue-500 hover:text-gray-900 transition-colors">
+                        {/* <a href="" className="p-4 text-sm border border-blue-500 text-blue-500 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-blue-500 hover:text-gray-900 transition-colors">
                             <Lightning size={24} />
                             Acesse o desafio
-                        </a>
+                        </a> */}
 
 
                     </div>
@@ -119,7 +121,7 @@ export function Video({lessonSlug}: VideoProps) {
                         </div>
                     </a>
 
-                    <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors ">
+                    {/* <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors ">
                         <div className="bg-green-700 h-full p-6 flex items-center">
                             <FileArrowUp size={40} />
                         </div>
@@ -132,7 +134,7 @@ export function Video({lessonSlug}: VideoProps) {
                         <div className="h-full p-6 flex items-center">
                             <CaretRight size={24} />
                         </div>
-                    </a>
+                    </a> */}
                 </div>
             </div>
         </div>
